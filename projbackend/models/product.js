@@ -1,8 +1,8 @@
 const { Number } = require("mongoose");
 const mongoose = require("mongoose");
-const { objectId } = mongoose.Schema;
+const { ObjectId } = mongoose.Schema;
 
-const productSchema = new mongooseSchema(
+const productSchema = new mongoose.Schema(
   {
     name: {
       type: String,
