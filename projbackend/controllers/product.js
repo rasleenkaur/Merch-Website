@@ -31,7 +31,7 @@ exports.createProduct = (req, res) => {
     // destructure the fields
     const { name, description, price, category, stock } = fields;
 
-    if (!name || !description || !category || !stock) {
+    if (!name || !description || !price || !category || !stock) {
       return res.status(400).json({
         error: "Please incluse all fields",
       });
@@ -70,7 +70,7 @@ exports.getProduct = (req, res) => {
 
 exports.photo = (req, res, next) => {
   if (req.product.photo.data) {
-    res.set("Content-Type", req.Product.photo.contentType);
+    res.set("Content-Type", req.product.photo.contentType);
     return res.send(req.product.photo.data);
   }
   next();
@@ -104,7 +104,7 @@ exports.updateProduct = (req, res) => {
 
     // updation on code
     let product = req.product;
-    product = _.extend(product, fileds);
+    product = _.extend(product, fields);
 
     // handle file here
     if (file.photo) {
